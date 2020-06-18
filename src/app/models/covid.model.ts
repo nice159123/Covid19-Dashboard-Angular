@@ -1,14 +1,49 @@
-export class Covid {
+export class CovidToday {
   Confirmed: Number;
-  Deaths: Number;
-  DevBy: String;
+  Recovered: Number;
   Hospitalized: Number;
+  Deaths: Number;
   NewConfirmed: Number;
   NewDeaths: Number;
   NewHospitalized: Number;
   NewRecovered: Number;
-  Recovered: Number;
-  SeverBy: String;
-  Source: String;
   UpdateDate: String;
+  Source: String;
+  DevBy: String;
+  SeverBy: String;
+}
+
+export class CovidTimeline {
+  UpdateDate: String;
+  Source: String;
+  DevBy: String;
+  SeverBy: String;
+  Data: [
+    {
+      Date: String;
+      NewConfirmed: Number;
+      NewRecovered: Number;
+      NewHospitalized: Number;
+      NewDeaths: Number;
+      Confirmed: Number;
+      Recovered: Number;
+      Hospitalized: Number;
+      Deaths: Number;
+    }
+  ];
+}
+
+export class CovidCasesSum {
+  Province: any;
+  Nation: any;
+  Gender: any;
+  LastData: String;
+  UpdateDate: String;
+  Source: String;
+  DevBy: String;
+  SeverBy: String;
+}
+
+export class CovidArea {
+
 }

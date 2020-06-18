@@ -1,12 +1,60 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col">
-
-    </div>
-    <div class="col">
-      <div class="card">
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-12 col-xl-6">
+      <div class="card mb-3 h-100">
         <div class="card-body">
+          <h5 class="text-center mt-xl-5">ยอดติดเชื้อวันนี้</h5>
+          <h1 class="text-center">{{ CovidToDay.NewConfirmed | number }}</h1>
+          <h6 class="text-center font-weight-bold">อัพเดทล่าสุด</h6>
+          <div class="text-center">
+            <span>{{ CovidToDay.UpdateDate }}</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-12 col-xl-6 text-center">
 
+            </div>
+            <div class="col-12 col-xl-6 text-center">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-xl-6">
+      <div class="row">
+        <div class="col-12 col-xl-12 px-1">
+          <div class="card mb-3 mb-xl-2">
+            <div class="card-body">
+              <h5 class="text-center">ยอดทั้งหมด</h5>
+              <h1 class="text-center">{{ CovidToDay.Confirmed | number }}</h1>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-xl-4 px-1">
+          <div class="card mb-3 mb-xl-0">
+            <div class="card-body">
+              <h5 class="text-center">รักษาหาย</h5>
+              <h1 class="text-center">{{ CovidToDay.Recovered | number }}</h1>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-xl-4 px-1">
+          <div class="card bg-success mb-3 mb-xl-0">
+            <div class="card-body">
+              <h5 class="text-center">รักษาอยู่</h5>
+              <h1 class="text-center">{{ CovidToDay.Hospitalized | number }}</h1>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-xl-4 px-1">
+          <div class="card bg-dark text-white mb-3 mb-xl-0">
+            <div class="card-body">
+              <h5 class="text-center">เสียชีวิต</h5>
+              <h1 class="text-center">{{ CovidToDay.Deaths | number }}</h1>
+            </div>
+          </div>
         </div>
       </div>
     </div>
