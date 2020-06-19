@@ -1,11 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CovidService } from 'src/app/services/covid.service';
-import {
-  CovidToday,
-  CovidTimeline,
-  CovidCasesSum,
-  CovidArea
-} from '../../models/covid.model';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,20 +7,37 @@ import {
 })
 export class HomeComponent implements OnInit {
 
-  public CovidToDay: CovidToday;
-  public CovidTimeline: CovidTimeline;
-  public CovidCasesSum: CovidCasesSum;
-  public CovidArea: CovidArea;
+  public covidNewConfirmed: Number;
+  public covidConfirmed: Number;
+  public covidRecovered: Number;
+  public covidHospitalized: Number;
+  public covidDeaths: Number;
+  public covidTotalMale: Number;
+  public covidTotalFemale: Number;
+  public covidUpdate: String;
+
+  public covidProvince: any;
+  public covidNation: any;
 
   constructor(
     private covidService : CovidService
   ) { }
 
   ngOnInit(): void {
-    this.covidService.getCovidToDay().subscribe(result => this.CovidToDay = result);
-    this.covidService.getCovidTimeline().subscribe(result => this.CovidTimeline = result);
-    this.covidService.getCovidCasesSum().subscribe(result => this.CovidCasesSum = result);
-    this.covidService.getCovidArea().subscribe(result => this.CovidArea = result);
+    this.covidService.getCovidToDay().subscribe( (result) => {
+      this.covidNewConfirmed = result.NewConfirmed;
+      this.covidConfirmed = result.Confirmed;
+      this.covidRecovered = result.Recovered;
+      this.covidHospitalized = result.Hospitalized;
+      this.covidDeaths = result.Deaths;
+      this.covidUpdate = result.UpdateDate;
+    });
+    this.covidService.getCovidCasesSum().subscribe( (result) => {
+      this.covidTotalMale = result.Gender.Male;
+      this.covidTotalFemale = result.Gender.Female;
+      this.covidProvince = result.Province;
+      this.covidNation = result.Nation;
+    });
   }
 
 }

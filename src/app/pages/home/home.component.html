@@ -1,60 +1,124 @@
 <div class="container">
-  <div class="row justify-content-md-center">
+  <div class="row justify-content-md-center mb-3 mb-xl-5">
     <div class="col-12 col-xl-6">
-      <div class="card mb-3 h-100">
-        <div class="card-body">
-          <h5 class="text-center mt-xl-5">ยอดติดเชื้อวันนี้</h5>
-          <h1 class="text-center">{{ CovidToDay.NewConfirmed | number }}</h1>
-          <h6 class="text-center font-weight-bold">อัพเดทล่าสุด</h6>
-          <div class="text-center">
-            <span>{{ CovidToDay.UpdateDate }}</span>
+      <div class="text-center text-white mt-xl-5 mb-3">
+        <h1>ยอดติดเชื้อวันนี้</h1>
+        <span class="display-1">{{ covidNewConfirmed | number }}</span>
+        <h6>อัพเดทล่าสุด</h6>
+        <small>{{ covidUpdate }}</small>
+      </div>
+    </div>
+    <div class="col-12 col-xl-6">
+      <div class="row">
+        <div class="col-12 col-xl-12 mb-2 px-1">
+          <div class="card bg-def text-white">
+            <div class="card-header">
+              <div class="row">
+                <div class="col-6 col-xl-6 text-center">
+                  <i class="fas fa-mars pr-1"></i>
+                  <small>ชาย {{ covidTotalMale | number }}</small>
+                </div>
+                <div class="col-6 col-xl-6 text-center">
+                  <i class="fas fa-venus pr-1"></i>
+                  <small>หญิง {{ covidTotalFemale | number }}</small>
+                </div>
+              </div>
+            </div>
+            <div class="card-body text-center p-1 p-xl-3">
+              <h5>ยอดทั้งหมด</h5>
+              <span class="h1">{{ covidConfirmed | number }}</span>
+            </div>
           </div>
         </div>
-        <div class="card-footer">
-          <div class="row">
-            <div class="col-12 col-xl-6 text-center">
-
+        <div class="col-4 col-xl-4 mb-2 px-1">
+          <div class="card bg-success h-100">
+            <div class="card-body text-center p-1 p-xl-3">
+              <h5>รักษาหาย</h5>
+              <span class="h1">{{ covidRecovered | number }}</span>
             </div>
-            <div class="col-12 col-xl-6 text-center">
-
+          </div>
+        </div>
+        <div class="col-4 col-xl-4 mb-2 px-1">
+          <div class="card bg-warning h-100">
+            <div class="card-body text-center p-1 p-xl-3">
+              <h5>กำลังรักษา</h5>
+              <span class="h1">{{ covidHospitalized | number }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 col-xl-4 mb-2 px-1">
+          <div class="card bg-dark text-white h-100">
+            <div class="card-body text-center p-1 p-xl-3">
+              <h5>เสียชีวิต</h5>
+              <span class="h1">{{ covidDeaths | number }}</span>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-12 col-xl-6">
-      <div class="row">
-        <div class="col-12 col-xl-12 px-1">
-          <div class="card mb-3 mb-xl-2">
-            <div class="card-body">
-              <h5 class="text-center">ยอดทั้งหมด</h5>
-              <h1 class="text-center">{{ CovidToDay.Confirmed | number }}</h1>
-            </div>
-          </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-xl-6 px-1">
+      <div class="card bg-def text-white mb-3">
+        <div class="card-header">
+          <h5>จังหวัด</h5>
         </div>
-        <div class="col-12 col-xl-4 px-1">
-          <div class="card mb-3 mb-xl-0">
-            <div class="card-body">
-              <h5 class="text-center">รักษาหาย</h5>
-              <h1 class="text-center">{{ CovidToDay.Recovered | number }}</h1>
-            </div>
-          </div>
+        <div class="table-responsive">
+          <table class="table table-sm table-hover text-white" id="table-province">
+            <thead>
+              <tr>
+                <th class="text-center">ลำดับ</th>
+                <th class="text-left">จังหวัด</th>
+                <th class="text-right">จำนวนผู้ติดเชื้อ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of covidProvince | keyvalue; index as i" class="tr-hover">
+                <td class="text-center">{{ i+1 }}</td>
+                <td class="text-left">{{ p.key }}</td>
+                <td class="text-right">{{ p.value | number }} คน</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th class="text-center">ลำดับ</th>
+                <th class="text-left">จังหวัด</th>
+                <th class="text-right">จำนวนผู้ติดเชื้อ</th>
+              </tr>
+            </tfoot>
+          </table>
         </div>
-        <div class="col-12 col-xl-4 px-1">
-          <div class="card bg-success mb-3 mb-xl-0">
-            <div class="card-body">
-              <h5 class="text-center">รักษาอยู่</h5>
-              <h1 class="text-center">{{ CovidToDay.Hospitalized | number }}</h1>
-            </div>
-          </div>
+      </div>
+    </div>
+    <div class="col-12 col-xl-6 px-1">
+      <div class="card bg-def text-white mb-3">
+        <div class="card-header">
+          <h5>สัญชาติ</h5>
         </div>
-        <div class="col-12 col-xl-4 px-1">
-          <div class="card bg-dark text-white mb-3 mb-xl-0">
-            <div class="card-body">
-              <h5 class="text-center">เสียชีวิต</h5>
-              <h1 class="text-center">{{ CovidToDay.Deaths | number }}</h1>
-            </div>
-          </div>
+        <div class="table-responsive">
+          <table class="table table-sm table-hover text-white" id="table-nation">
+            <thead>
+              <tr>
+                <th class="text-center">ลำดับ</th>
+                <th class="text-left">สัญชาติ</th>
+                <th class="text-right">จำนวนผู้ติดเชื้อ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let n of covidNation | keyvalue; index as i" class="tr-hover">
+                <td class="text-center">{{ i+1 }}</td>
+                <td class="text-left">{{ n.key }}</td>
+                <td class="text-right">{{ n.value | number }} คน</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th class="text-center">ลำดับ</th>
+                <th class="text-left">สัญชาติ</th>
+                <th class="text-right">จำนวนผู้ติดเชื้อ</th>
+              </tr>
+            </tfoot>
+          </table>
         </div>
       </div>
     </div>

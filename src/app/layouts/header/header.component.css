@@ -1,3 +1,6 @@
 .bg-covid {
   background-color: #103e95;
 }
+.table-hover:hover {
+  color: #ffffff;
+}

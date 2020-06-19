@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-xl-12 px-1">
+      <div class="card bg-def text-white mb-3">
+        <div class="card-header">
+          <h5>รายการย้อนหลัง</h5>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-sm text-white">
+            <thead>
+              <tr>
+                <th class="text-center">ลำดับ</th>
+                <th class="text-center">วันที่</th>
+                <th class="text-right">ผู้ติดเชื้อใหม่</th>
+                <th class="text-right">รักษาหายใหม่</th>
+                <th class="text-right">รักษาใหม่</th>
+                <th class="text-right">เสียชีวิตใหม่</th>
+                <th class="text-right">ผู้ติดเชื้อ</th>
+                <th class="text-right">รักษาหาย</th>
+                <th class="text-right">รักษาอยู่</th>
+                <th class="text-right">เสียชีวิต</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let t of covidTimeline; index as i" class="tr-hover">
+                <td class="text-center">{{ i+1 }}</td>
+                <td class="text-center">{{ t.Date }}</td>
+                <td class="text-right">{{ t.NewConfirmed | number }} คน</td>
+                <td class="text-right">{{ t.NewRecovered | number }} คน</td>
+                <td class="text-right">{{ t.NewHospitalized | number }} คน</td>
+                <td class="text-right">{{ t.NewDeaths | number }} คน</td>
+                <td class="text-right">{{ t.Confirmed | number }} คน</td>
+                <td class="text-right">{{ t.Recovered | number }} คน</td>
+                <td class="text-right">{{ t.Hospitalized | number }} คน</td>
+                <td class="text-right">{{ t.Deaths | number }} คน</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th class="text-center">ลำดับ</th>
+                <th class="text-center">วันที่</th>
+                <th class="text-right">ผู้ติดเชื้อใหม่</th>
+                <th class="text-right">รักษาหายใหม่</th>
+                <th class="text-right">รักษาใหม่</th>
+                <th class="text-right">เสียชีวิตใหม่</th>
+                <th class="text-right">ผู้ติดเชื้อ</th>
+                <th class="text-right">รักษาหาย</th>
+                <th class="text-right">รักษาอยู่</th>
+                <th class="text-right">เสียชีวิต</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
